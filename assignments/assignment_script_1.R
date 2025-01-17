@@ -6,7 +6,7 @@ buoys=buoys|>filter(id=="M01")
 db = db |> filter(scenario == "PRESENT", interval == "mon")
 covars=read_brickman(db)
 x = extract_brickman(covars, buoys, form = "wide")
-mutate(month = factor(month, levels = month.abb))
+x= x |>mutate(month = factor(month, levels = month.abb))
 ggplot(data = x,
        mapping = aes(x = month, y = SST)) +
   geom_point() + 
