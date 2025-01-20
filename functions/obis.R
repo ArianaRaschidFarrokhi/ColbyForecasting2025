@@ -85,7 +85,7 @@ fetch_obis = function(scientificname = "Mola mola",
 
 
 
-read_obis = function(scientificname = "Mola mola",
+read_obis = function(scientificname = "Fratercula arctica",
                      path = data_path("obis")){
   
   #' Read one or more obis data files

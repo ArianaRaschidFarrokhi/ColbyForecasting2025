@@ -17,7 +17,7 @@ get_user = function(){
   #' 
   #' @return username
   
-  system("whoami", intern = TRUE)
+  system("whoami", intern = TRUE)  |> basename()
 }
 
 
@@ -28,11 +28,30 @@ make_path = function(path){
   #' @param path chr the path to create
   #' @return the path
   
-  if (!dir.exists(path)) ok = dir.create(path, recursive = TRUE)
+ if (!dir.exists(path)) ok = dir.create(path, recursive = TRUE)
   return(path)
 }
 
-
+#' make_path = function(path){
+#'   
+#'   #' Make a path if it doesn't exist
+#'   #' 
+#'   #' @param path chr the path to create
+#'   #' @return the path
+#'   
+#'   # macos/linux/unix
+#'   if (.Platform$OS.type == "unix"){
+#'     # macos/linux/unix
+#'     if (!dir.exists(path)) ok = dir.create(path, recursive = TRUE)
+#'   } else {
+#'     # windows
+#'     if (!dir.exists(path)){
+#'       cmd = paste("mkdir", dQuote(normalizePath(path)), sep = " ")
+#'       ok = system(cmd)
+#'     }
+#'   }
+#'   return(path)
+#' }
 
 personal_data_path = function(user = get_user(),
                               year = get_year(),
@@ -60,7 +79,7 @@ data_path = function(..., root = personal_data_path()){
   #' @param root chr, the root personal data directory
   #' @return some directory in the personal data path
   
-  file.path(root, ...)
+ file.path(root, ...)
 }
 
 

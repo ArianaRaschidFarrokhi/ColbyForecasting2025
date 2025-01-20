@@ -1,6 +1,6 @@
 
 read_observations = function(scientificname = "Fratercula arctica",
-                             minimum_year = 1970, 
+                             minimum_year = 1969,
                              ...){
   
   #' Read raw OBIS data and then filter it
@@ -12,25 +12,9 @@ read_observations = function(scientificname = "Fratercula arctica",
   #' @return a filtered table of observations
   
   # Happy coding!
-  fetch_obis(scientificname="Fratercula arctica")
-  SPECIES="Fratercula arctica"
-  summary(SPECIES)
-  obs= read_obis(SPECIES)
-  dim_start=dim(obs)
-  dim_start
-  summary(obs)
-  plot(obs)
-  obs |>
-    filter(is.na(eventDate)) |>
-    slice(1) |>
-    browse_obis()
-  ggplot(data = obs,
-         mapping = aes(x = year)) + 
-    geom_bar() + 
-    geom_vline(xintercept = c(1970, 2022), linetype = "dashed") + 
-    labs(title = "Counts per year")
+  
   # read in the raw data
-  x = read_obis(scientificname="Fratercula arctica")
+  x = read_obis(scientificname)
   
   # if the user provided a non-NULL filter by year
   if (!is.null(minimum_year)){
@@ -40,3 +24,4 @@ read_observations = function(scientificname = "Fratercula arctica",
   
   return(x)
 }
+

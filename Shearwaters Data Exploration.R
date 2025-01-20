@@ -62,6 +62,7 @@
 #become a suitable habitat for them)
 
 #shearwaters is the shorthening I gave their name
+shearwaters="Puffinus_gravis"
 
 #to bring up observations
 shearwaters
